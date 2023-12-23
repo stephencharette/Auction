@@ -1,0 +1,20 @@
+<h1 class="is-size-2">Selling</h1>
+
+<!-- TODO: make this a form -->
+<div class="field">
+  <p class="control has-icons-left has-icons-right">
+    <input class="input" type="text" placeholder="Search for items">
+    <span class="icon is-small is-left">
+      <i class="fas fa-search"></i>
+    </span>
+  </p>
+</div>
+
+<div class="columns is-desktop">
+  <div *ngFor="let item of searchResults">
+    <div class="column">
+      <h4>{{ item.title }}</h4>
+      <p>{{ item.brand.name }}</p>
+    </div>
+  </div>
+</div>

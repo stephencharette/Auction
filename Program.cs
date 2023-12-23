@@ -4,7 +4,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer 
+    { 
+        Description = "Development Server", 
+        Url = "https://localhost:7274" 
+    });
+});
+
 var app = builder.Build();
+
+app.UseSwagger().UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -16,7 +27,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",

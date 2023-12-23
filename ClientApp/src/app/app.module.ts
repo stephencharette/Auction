@@ -11,8 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 // Material UI imports
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { SearchItemsComponent } from './search-items/search-items.component';
 
 @NgModule({
   declarations: [
@@ -21,18 +20,15 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    SearchItemsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', component: SearchItemsComponent, pathMatch: 'full' },
     ]),
-    MatButtonModule,
-    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
