@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 // Material UI imports
 import { SearchItemsComponent } from './search-items/search-items.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchItemsComponent } from './search-items/search-items.component';
     CounterComponent,
     FetchDataComponent,
     SearchItemsComponent,
+    ItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +30,7 @@ import { SearchItemsComponent } from './search-items/search-items.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: SearchItemsComponent, pathMatch: 'full' },
+      { path: 'item', component: ItemComponent, pathMatch: 'prefix' },
     ]),
   ],
   providers: [],

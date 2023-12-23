@@ -1,20 +1,18 @@
-<h1 class="is-size-2">Selling</h1>
+<div class="max-w-screen-xl mx-10 space-y-4">
+  <h1 class="text-5xl font-bold">Selling</h1>
 
-<!-- TODO: make this a form -->
-<div class="field">
-  <p class="control has-icons-left has-icons-right">
-    <input class="input" type="text" placeholder="Search for items">
-    <span class="icon is-small is-left">
-      <i class="fas fa-search"></i>
-    </span>
-  </p>
-</div>
-
-<div class="columns is-desktop">
-  <div *ngFor="let item of searchResults">
-    <div class="column">
-      <h4>{{ item.title }}</h4>
-      <p>{{ item.brand.name }}</p>
+  <div class="grid grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-4">
+    <div *ngFor="let item of searchResults">
+      <div class="space-y-2 cursor-pointer">
+        <div>
+          <img class="h-auto max-w-full rounded-lg"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+            alt>
+        </div>
+        <div class="space-y-0">
+          <h2 class="text-xl font-bold">{{ item.title }}</h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
