@@ -1,17 +1,30 @@
+using Supabase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer 
-    { 
-        Description = "Development Server", 
-        Url = "https://localhost:7274" 
+    c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer
+    {
+        Description = "Development Server",
+        Url = "https://localhost:7274"
     });
 });
+
+var url = Environment.GetEnvironmentVariable("DatabaseUrl");
+var key = Environment.GetEnvironmentVariable("DatabaseKey");
+var options = new SupabaseOptions
+{
+    AutoRefreshToken = true,
+    AutoConnectRealtime = true,
+};
+
+builder.Services.AddSingleton(provider => new Supabase.Client(url!, key, options));
 
 var app = builder.Build();
 

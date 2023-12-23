@@ -1,21 +1,15 @@
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:60478",
-      "sslPort": 44396
-    }
-  },
+{
   "profiles": {
     "Auction": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7274;http://localhost:5115",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy",
+        "DatabaseKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlamZpZ2JjY25mamhpaXpzbnFtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMzM1NDUzNywiZXhwIjoyMDE4OTMwNTM3fQ.VM3quQteYBB4AABcbGHpTyxSaY08vF8hDo4ITxg0FdI",
+        "DatabaseUrl": "https://tejfigbccnfjhiizsnqm.supabase.co"
+      },
+      "applicationUrl": "https://localhost:7274;http://localhost:5115"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -24,6 +18,14 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
       }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:60478",
+      "sslPort": 44396
     }
   }
 }

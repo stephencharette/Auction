@@ -7,23 +7,21 @@ namespace Auction.Controllers;
 [Route("[controller]")]
 public class ItemController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
     private readonly ILogger<ItemController> _logger;
+    private readonly Supabase.Client _database;
 
-    public ItemController(ILogger<ItemController> logger)
+    public ItemController(ILogger<ItemController> logger, Supabase.Client database)
     {
         _logger = logger;
+        _database = database;
     }
 
     [HttpGet]
-    public IEnumerable<ItemRm> Search()
-        => new ItemRm[]
-        {
-            new (Guid.NewGuid(), "2017 16\" Macbook Pro", "Test", new BrandRm(Guid.NewGuid(), "Apple")),
-            new (Guid.NewGuid(), "2015 15\" Macbook Pro", "Test", new BrandRm(Guid.NewGuid(), "Apple")),
-        };
+    public async Task<IEnumerable<Item>> Search()
+    {
+        var result = await _database.From<Item>().Get();
+        var items = result.Models;
+
+        return items;
+    }
 }
