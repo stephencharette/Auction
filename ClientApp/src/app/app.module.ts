@@ -15,6 +15,7 @@ import { SearchItemsComponent } from './search-items/search-items.component';
 import { ItemComponent } from './item/item.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SearchComponent } from './search/search.component';
+import { NewItemComponent } from './new-item/new-item.component';
 
 import { environment } from 'src/environments/environment';
 import { ApiInterceptor } from 'src/config/api-interceptor';
@@ -30,6 +31,7 @@ import { ApiInterceptor } from 'src/config/api-interceptor';
     ItemComponent,
     BreadcrumbComponent,
     SearchComponent,
+    NewItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -37,7 +39,8 @@ import { ApiInterceptor } from 'src/config/api-interceptor';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: SearchItemsComponent, pathMatch: 'full' },
-      { path: 'item', component: ItemComponent, pathMatch: 'prefix' },
+      { path: 'items', component: ItemComponent, pathMatch: 'prefix' },
+      { path: 'items/new', component: NewItemComponent, pathMatch: 'prefix' },
     ]),
   ],
   providers: [
