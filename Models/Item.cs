@@ -20,4 +20,7 @@ public class Item : BaseModel
 
     [Reference(typeof(Brand))]
     public Brand? Brand { get; set; }
+
+    [Column("price")]
+    public decimal Price { get; set; }
 }
