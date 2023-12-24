@@ -48,7 +48,7 @@ public class ItemController : ControllerBase
 
         if (result != null)
         {
-            return CreatedAtAction("test", result.Model);
+            return CreatedAtAction("", result.Model);
         }
 
         return StatusCode(500, "Internal Server Error");

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .container {
-  @apply max-w-screen-xl flex flex-wrap items-center space-y-4 mx-auto px-10 py-4;
+  @apply max-w-screen-xl flex flex-col space-y-4 mx-auto px-10 py-4;
 }
 
 .outline-button {
@@ -43,5 +43,5 @@ input[type="search"] {
 }
 
 label {
-  @apply text-sm font-medium text-gray-900 sr-only dark:text-white;
+  @apply text-sm font-medium text-gray-900 sr-only dark:text-white
 }

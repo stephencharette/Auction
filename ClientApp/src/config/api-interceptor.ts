@@ -19,8 +19,8 @@ export class ApiInterceptor implements HttpInterceptor {
     let requestUrl = req.url;
     // if the request URL have the string prefix,
     // then make the replace by the correct url
-    if (requestUrl.indexOf('@api-x') !== -1) {
-      requestUrl = requestUrl.replace('@api-x', environment.apiUrl);
+    if (requestUrl.indexOf('@api') !== -1) {
+      requestUrl = requestUrl.replace('@api', environment.apiUrl);
     }
     // clone the http request
     req = req.clone({

@@ -1382,8 +1382,7 @@ input[type="range"]::-ms-fill-lower {
   margin-right: auto;
   display: flex;
   max-width: 1280px;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
 }
 
 .container > :not([hidden]) ~ :not([hidden]) {

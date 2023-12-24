@@ -12,9 +12,8 @@ export class SearchItemsComponent implements OnInit {
   constructor(private http: HttpClient) {}
   searchResults: Item[] = []
   getDataFromServer() {
-    this.http.get<any>('@api-x/item').subscribe(
+    this.http.get<any>('@api/item').subscribe(
       (data) => {
-        console.log("asdfasdf");
         this.searchResults = data;
       },
       (error) => {
