@@ -1,31 +1,29 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Item } from 'src/models/item';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-items',
   templateUrl: './search-items.component.html',
   styleUrls: ['./search-items.component.css']
 })
-export class SearchItemsComponent {
-  searchResults: ItemRm[] = [
-    {
-      title: '2017 16" Macbook Pro',
-      description: "256 GB",
-      brand: { name: "Apple" }
-    },
-    {
-      title: '2015 15" Macbook Pro',
-      description: "512 GB",
-      brand: { name: "Apple" }
-    }
-  ]
-}
+export class SearchItemsComponent implements OnInit {
+  constructor(private http: HttpClient) {}
+  searchResults: Item[] = []
+  getDataFromServer() {
+    this.http.get<any>('@api-x/item').subscribe(
+      (data) => {
+        console.log("asdfasdf");
+        this.searchResults = data;
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
 
-export interface ItemRm {
-  title: string;
-  description: string;
-  brand: Brand;
-}
-
-export interface Brand {
-  name: string;
+  ngOnInit() {
+    this.getDataFromServer();
+  }
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +13,11 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 // Material UI imports
 import { SearchItemsComponent } from './search-items/search-items.component';
 import { ItemComponent } from './item/item.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { SearchComponent } from './search/search.component';
+
+import { environment } from 'src/environments/environment';
+import { ApiInterceptor } from 'src/config/api-interceptor';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,8 @@ import { ItemComponent } from './item/item.component';
     FetchDataComponent,
     SearchItemsComponent,
     ItemComponent,
+    BreadcrumbComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,7 +40,16 @@ import { ItemComponent } from './item/item.component';
       { path: 'item', component: ItemComponent, pathMatch: 'prefix' },
     ]),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+    {
+      provide: "BASE_API_URL", useValue: environment.apiUrl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

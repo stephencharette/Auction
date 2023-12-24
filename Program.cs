@@ -26,6 +26,17 @@ var options = new SupabaseOptions
 
 builder.Services.AddSingleton(provider => new Supabase.Client(url!, key, options));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:44351", "http://localhost:4200")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 app.UseSwagger().UseSwaggerUI();
@@ -40,6 +51,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 
 app.MapControllerRoute(
     name: "default",
